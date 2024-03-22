@@ -1,12 +1,14 @@
 from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask import jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://bjvhtkuz:LndDY2I9eN_Oyr3rBn8aDSrufDE8459H@raja.db.elephantsql.com/bjvhtkuz'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Disable modification tracking
 
 db = SQLAlchemy(app)
+CORS(app)
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
